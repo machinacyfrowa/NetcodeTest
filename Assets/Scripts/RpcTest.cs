@@ -7,7 +7,8 @@ public class RpcTest : NetworkBehaviour
 {
     public override void OnNetworkSpawn()
     {
-
+        if (IsOwner && !IsServer)
+            TestServerRpc(0, NetworkObjectId);
     }
 
     [ClientRpc]
