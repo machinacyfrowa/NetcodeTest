@@ -24,6 +24,17 @@ public class GUIScript : MonoBehaviour
         if (NetworkManager.Singleton.IsClient)
             GUILayout.Label("Pracuje jako klient");
         GUILayout.Label("Metoda po³¹czenia: " + NetworkManager.Singleton.NetworkConfig.NetworkTransport.GetType().Name);
+        if (NetworkManager.Singleton.IsClient || NetworkManager.Singleton.IsHost)
+        {
+            if(GUILayout.Button("Przesuñ siê"))
+            {
+                //znajdz obecnego gracza 
+                NetworkObject player = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject();
+                //wywolaj dla niego funkcje move
+                player.GetComponent<PlayerController>().Move();
+            }
+        }
+        
         GUILayout.EndArea();
     }
 }

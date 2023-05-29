@@ -31,11 +31,11 @@ public class PlayerController : NetworkBehaviour
         else
         {
             //nie jesteœmy serwerem - wyœlij proœbê o zmianê pozycji
-            ServerSideMove();
+            MoveServerRpc();
         }
     }
     [ServerRpc]
-    void ServerSideMove(ServerRpcParams rpcParams = default)
+    void MoveServerRpc(ServerRpcParams rpcParams = default)
     {
         //ta funkcja porusza nas po stronie serwera na nasze rz¹danie
         Position.Value = GetRandomPosition();
